@@ -42,15 +42,12 @@ function toString(bytes memory data) private pure returns(string memory) {
     
 }
 
-
-
     
   function UniqaddressId(address user)public pure returns(uint a){
          uint (keccak256(abi.encodePacked(user)))%100000000;
          return uint(a);
         
     }
-
 
 
     function getSlice( string text) public pure returns (string) {

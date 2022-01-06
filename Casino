@@ -21,8 +21,7 @@ contract Casino {
     function Casino()
         public {
         start = block.timestamp;    
-    }
-    
+    }    
     /**
      * This should NOT be part of the contract!!
      */

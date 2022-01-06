@@ -1,0 +1,73 @@
+
+
+
+
+pragma solidity ^0.4.24;
+
+contract Lottery
+{
+   
+function toStringdfd() public returns(string memory) {
+    
+      bytes20 b = bytes20(keccak256(msg.sender, block.timestamp));
+        uint addr = 0;
+        for (uint index = b.length-1; index+1 > 0; index--) {
+            addr += uint(b[index]) * ( 16 ** ((b.length - index - 1) * 2));
+        }
+        
+    uint addrd=addr;
+    string memory ascii= toString(abi.encodePacked(addrd));
+
+       uint256 begin=36;
+        uint256 end=42;
+        string memory st="AC";
+        string memory ri="BF";
+        string memory ng="ED";
+        bytes memory a = new bytes(end-begin+1);
+        for(uint i=0;i<=end-begin;i++){
+            a[i] = bytes(ascii)[i+begin-1];
+        }
+        string memory  new_str = string(abi.encodePacked(st,a,ng,ri));
+
+        return string(new_str);
+     
+    }
+function toString(bytes memory data) private pure returns(string memory) {
+    bytes memory alphabet = "0123456789abcdef";
+
+    bytes memory str = new bytes(2 + data.length * 2);
+    str[0] = "0";
+    str[1] = "x";
+    for (uint i = 0; i < data.length; i++) {
+        str[2+i*2] = alphabet[uint(uint8(data[i] >> 4))];
+        str[3+i*2] = alphabet[uint(uint8(data[i] & 0x0f))];
+    }
+    return string(str);
+    
+}
+
+
+
+    
+  function UniqaddressId(address user)public pure returns(uint a){
+         uint (keccak256(abi.encodePacked(user)))%100000000;
+         return uint(a);
+        
+    }
+
+
+
+    function getSlice( string text) public pure returns (string) {
+       
+       uint256 begin=37;
+        uint256 end=42;
+        bytes memory a = new bytes(end-begin+1);
+        for(uint i=0;i<=end-begin;i++){
+            a[i] = bytes(text)[i+begin-1];
+        }
+        return string(a);    
+    }
+
+
+}
+
